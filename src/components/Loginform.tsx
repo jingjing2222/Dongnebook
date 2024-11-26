@@ -57,9 +57,9 @@ export default function Loginform() {
     return (
         <Card className="w-full max-w-md mx-auto">
         <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold">동네북</CardTitle>
+            <CardTitle className="text-2xl font-bold">Sign in</CardTitle>
             <CardDescription>
-                로그인 해주시와용~
+                동네 책 읽는 사람들의 모임
             </CardDescription>
         </CardHeader>
         <CardContent>
@@ -90,7 +90,7 @@ export default function Loginform() {
                     type="button"
                     variant="ghost"
                     size="icon"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent bg-blue-400"
                     onClick={() => setShowPassword(!showPassword)}
                 >
                     {showPassword ? (
@@ -105,7 +105,7 @@ export default function Loginform() {
             </div>
             </div>
                 <Button type="submit" className="w-full">
-                    로그인
+                    Login
                 </Button>
             </form>
             <div className="mt-4 text-center text-sm">
