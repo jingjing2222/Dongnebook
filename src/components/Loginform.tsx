@@ -5,9 +5,11 @@ import { supabase } from "@/utils/SupabaseClient"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function LoginForm() {
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {Link} from '@tanstack/react-router'
+
+export default function Loginform() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
@@ -108,9 +110,9 @@ export default function LoginForm() {
             </form>
             <div className="mt-4 text-center text-sm">
                 계정이 없으신가요?{" "}
-                <a href="/signup" className="text-blue-500 hover:underline">
+                <Link to="/signup" className="text-blue-500 hover:underline">
                     회원가입
-                </a>
+                </Link>
             </div>
         </CardContent>
     </Card>

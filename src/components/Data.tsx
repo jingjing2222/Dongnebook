@@ -2,16 +2,17 @@ import {useState} from "react";
 import { supabase } from "@/utils/SupabaseClient";
 import { Button } from "./ui/button";
 
+type Member={
+    member_id:number;
+    name:string;
+    nickname:string;
+    email:string;
+    age:number;
+    role:string;
+    participation:boolean;
+};
+
 export default function Data(){
-    type Member={
-        member_id:number;
-        name:string;
-        nickname:string;
-        email:string;
-        age:number;
-        role:string;
-        participation:boolean;
-    };
     const [members, setMembers] = useState<Member[]|[]>([]);
 
     const fetchMembers = async ():Promise<void> => {
