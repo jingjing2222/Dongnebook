@@ -3,13 +3,26 @@ import { supabase } from "@/utils/SupabaseClient";
 import { Button } from "./ui/button";
 
 export default function Data(){
-    const [members, setMembers] = useState([]);
-  
-    const fetchMembers = async () => {
+    type Member={
+        member_id:number;
+        name:string;
+        nickname:string;
+        email:string;
+        age:number;
+        role:string;
+        participation:boolean;
+    };
+    const [members, setMembers] = useState<Member[]|[]>([]);
+
+    const fetchMembers = async ():Promise<void> => {
         const {data} = await supabase
             .from('members')
             .select('*');
-            setMembers(data);
+            if (data) {
+                setMembers(data); // 데이터가 존재하는 경우 설정
+            } else {
+                setMembers([]); // null일 경우 빈 배열로 설정
+            }
             
     };
 
