@@ -13,7 +13,6 @@ type Member = {
 	participation: boolean;
 };
 
-// 데이터 가져오기 함수
 const fetchMembers = async () => {
 	const { data, error } = await supabase.from('members').select('*');
 	if (error) throw new Error(error.message);
@@ -32,16 +31,13 @@ const deleteMembers=async(member_id:number) =>{
 
 export default function Data() {
 
-    const queryClient=useQueryClient();
-
-	// useQuery로 데이터 가져오기
 	const { data: members = [], isLoading, error, refetch } = useQuery({
-		queryKey: ['members'], // 쿼리 키를 객체로 전달
-		queryFn: fetchMembers, // fetcher 함수
+		queryKey: ['members'],
+		queryFn: fetchMembers,
 	});
 
     const addMutation = useMutation({
-		mutationFn: addMembers, // 추가 작업
+		mutationFn: addMembers,
 		onSuccess: () => {
 			console.log("Member added successfully!");
 		},
@@ -102,11 +98,11 @@ export default function Data() {
             <br/>
             <h2>Delete Member</h2>
             <input
-            className="bg-white"
-            type="number"
-            placeholder="member_id"
-            value={deleteMember}
-            onChange={(e) => setDeleteMember(Number(e.target.value))}>
+				className="bg-white"
+				type="number"
+				placeholder="member_id"
+				value={deleteMember}
+				onChange={(e) => setDeleteMember(Number(e.target.value))}>
             </input>
             <Button onClick={()=>deleteMutation.mutate(deleteMember)}>
                 {deleteMutation.isLoading ? "Adding..." : "Delete member"}
